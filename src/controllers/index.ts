@@ -3,6 +3,6 @@
 // This file is licensed under the MIT License.
 // License text available at https://opensource.org/licenses/MIT
 
-export * from './todo.controller';
+
 export * from './user.controller';
 export * from './list-user.controller';
