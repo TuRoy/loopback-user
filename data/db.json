@@ -3,7 +3,8 @@
     "Todo": 6,
     "User": 7,
     "UserCredentials": 7,
-    "ListUser": 19
+    "ListUser": 30,
+    "Company": 11
   },
   "models": {
     "Todo": {
@@ -30,13 +31,22 @@
       "cec8e124-91e1-4bf4-a764-051d6c38b1c8": "{\"id\":\"cec8e124-91e1-4bf4-a764-051d6c38b1c8\",\"password\":\"$2a$10$pMAoGaqrxLfFAclYW1NOgeJsDprsVXZ/d6m8x3PnqfyKgItEAnCIu\",\"userId\":\"d7b0376b-2d3c-4f2e-85c5-86d06b0b37bf\"}"
     },
     "ListUser": {
-      "12": "{\"username\":\"string123\",\"address\":\"string\",\"email\":\"string\",\"birthday\":\"2023-02-15T03:27:03.621Z\",\"role\":\"Admin\",\"additionalProp1\":{},\"id\":12}",
-      "13": "{\"username\":\"chsgam12313e\",\"address\":\"hcm\",\"birthday\":\"2023-02-15T03:30:12.894Z\",\"role\":\"Admin\",\"id\":13}",
-      "14": "{\"id\":14,\"username\":\"bui anh tu \",\"address\":\"hcm\",\"birthday\":\"2023-02-15T03:30:12.894Z\",\"role\":\"User\"}",
-      "15": "{\"username\":\"awdawd\",\"address\":\"dfdfgdfg\",\"birthday\":\"2023-02-16\",\"role\":\"User\",\"id\":15}",
-      "16": "{\"username\":\"awdawd123123\",\"address\":\"dfdfgdfgasd\",\"birthday\":\"2023-02-16\",\"role\":\"Admin\",\"id\":16}",
-      "17": "{\"id\":17,\"username\":\"sadasdasd\",\"address\":\"dfdsfdf\",\"birthday\":\"2023-02-14\",\"role\":\"User\"}",
-      "18": "{\"username\":\"jhhjhj\",\"address\":\"hjkhjkjk\",\"birthday\":\"2023-02-16\",\"role\":\"Admin\",\"id\":18}"
+      "12": "{\"id\":12,\"username\":\"string123457\",\"address\":\"string\",\"birthday\":\"2023-02-15T03:27:03.621Z\",\"companyId\":4,\"role\":\"Admin\"}",
+      "13": "{\"id\":13,\"username\":\"chsgam12313e\",\"address\":\"hcm\",\"birthday\":\"2023-02-15T03:30:12.894Z\",\"companyId\":1,\"role\":\"User\"}",
+      "14": "{\"id\":14,\"username\":\"bui anh tu \",\"address\":\"hcm\",\"birthday\":\"2023-02-15T03:30:12.894Z\",\"companyId\":2,\"role\":\"User\"}",
+      "17": "{\"id\":17,\"username\":\"sadasdasd\",\"address\":\"dfdsfdf\",\"birthday\":\"2023-02-14\",\"companyId\":4,\"role\":\"User\"}",
+      "24": "{\"id\":24,\"username\":\"m , m\",\"address\":\"jnkjnkjnkjnkn\",\"birthday\":\"2023-02-13\",\"companyId\":1,\"role\":\"User\"}",
+      "25": "{\"id\":25,\"username\":\"anhtu 12312\",\"address\":\"long xuyen \",\"birthday\":\"2023-02-15\",\"companyId\":1,\"role\":\"User\"}",
+      "26": "{\"username\":\"valorant\",\"address\":\"ha noi \",\"birthday\":\"2023-02-14\",\"companyId\":4,\"role\":\"User\",\"id\":26}",
+      "27": "{\"username\":\"valorant123123\",\"address\":\"ha noi csdfsdf\",\"birthday\":\"2023-02-10\",\"companyId\":1,\"role\":\"Admin\",\"id\":27}",
+      "28": "{\"username\":\"tu\",\"address\":\"113kimhoa\",\"birthday\":\"2023-02-06\",\"companyId\":2,\"role\":\"User\",\"id\":28}",
+      "29": "{\"username\":\"anhtu123\",\"address\":\"asdasdasd\",\"birthday\":\"2023-02-25\",\"companyId\":5,\"role\":\"Admin\",\"id\":29}"
+    },
+    "Company": {
+      "1": "{\"name\":\"melisoft\",\"city\":\"ha noi\",\"additionalProp1\":{},\"id\":1}",
+      "2": "{\"name\":\"roym\",\"city\":\"ho chi minh\",\"additionalProp1\":{},\"id\":2}",
+      "4": "{\"name\":\"imc\",\"city\":\"hcm\",\"id\":4}",
+      "5": "{\"name\":\"vpn\",\"city\":\"viet nam\",\"id\":5}"
     }
   }
 }

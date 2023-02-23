@@ -1,4 +1,5 @@
-import {Entity, model, property} from '@loopback/repository';
+import {belongsTo, Entity, model, property} from '@loopback/repository';
+import { Company } from './company.model';
 
 @model({settings: {strict: false}})
 export class ListUser extends Entity {
@@ -28,6 +29,9 @@ export class ListUser extends Entity {
     required: true,
   })
   birthday: string;
+
+  @belongsTo(()=> Company )
+  companyId: number
 
   @property({
     type: 'string',

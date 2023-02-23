@@ -4,6 +4,7 @@ export declare class ListUser extends Entity {
     username: string;
     address: string;
     birthday: string;
+    companyId: number;
     role: string;
     [prop: string]: any;
     constructor(data?: Partial<ListUser>);

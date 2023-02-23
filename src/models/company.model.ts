@@ -1,0 +1,45 @@
+import {Entity, hasMany, model, property} from '@loopback/repository';
+import { ListUser } from './list-user.model';
+
+@model({settings: {strict: false}})
+export class Company extends Entity {
+  @property({
+    type: 'number',
+    id: true,
+    generated: true,
+  })
+  id?: number;
+
+  @property({
+    type: 'string',
+    required: true,
+  })
+  name: string;
+
+
+
+  @hasMany(()=> ListUser, {keyTo: 'companyId' })
+  listuser? : ListUser[]
+
+  @property({
+    type: 'string',
+    required: true,
+  })
+  city: string;
+
+  // Define well-known properties here
+
+  // Indexer property to allow additional data
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  [prop: string]: any;
+
+  constructor(data?: Partial<Company>) {
+    super(data);
+  }
+}
+
+export interface CompanyRelations {
+  // describe navigational properties here
+}
+
+export type CompanyWithRelations = Company & CompanyRelations;

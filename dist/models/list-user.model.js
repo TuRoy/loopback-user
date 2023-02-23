@@ -3,6 +3,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.ListUser = void 0;
 const tslib_1 = require("tslib");
 const repository_1 = require("@loopback/repository");
+const company_model_1 = require("./company.model");
 let ListUser = class ListUser extends repository_1.Entity {
     constructor(data) {
         super(data);
@@ -37,6 +38,10 @@ tslib_1.__decorate([
     }),
     tslib_1.__metadata("design:type", String)
 ], ListUser.prototype, "birthday", void 0);
+tslib_1.__decorate([
+    (0, repository_1.belongsTo)(() => company_model_1.Company),
+    tslib_1.__metadata("design:type", Number)
+], ListUser.prototype, "companyId", void 0);
 tslib_1.__decorate([
     (0, repository_1.property)({
         type: 'string',
