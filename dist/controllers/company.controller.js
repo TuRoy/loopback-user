@@ -112,10 +112,10 @@ tslib_1.__decorate([
             },
         },
     }),
-    tslib_1.__param(0, rest_1.param.path.number('id')),
+    tslib_1.__param(0, rest_1.param.path.string('id')),
     tslib_1.__param(1, rest_1.param.filter(models_1.Company, { exclude: 'where' })),
     tslib_1.__metadata("design:type", Function),
-    tslib_1.__metadata("design:paramtypes", [Number, Object]),
+    tslib_1.__metadata("design:paramtypes", [String, Object]),
     tslib_1.__metadata("design:returntype", Promise)
 ], CompanyController.prototype, "findById", null);
 tslib_1.__decorate([
@@ -123,7 +123,7 @@ tslib_1.__decorate([
     (0, rest_1.response)(204, {
         description: 'Company PATCH success',
     }),
-    tslib_1.__param(0, rest_1.param.path.number('id')),
+    tslib_1.__param(0, rest_1.param.path.string('id')),
     tslib_1.__param(1, (0, rest_1.requestBody)({
         content: {
             'application/json': {
@@ -132,7 +132,7 @@ tslib_1.__decorate([
         },
     })),
     tslib_1.__metadata("design:type", Function),
-    tslib_1.__metadata("design:paramtypes", [Number, models_1.Company]),
+    tslib_1.__metadata("design:paramtypes", [String, models_1.Company]),
     tslib_1.__metadata("design:returntype", Promise)
 ], CompanyController.prototype, "updateById", null);
 tslib_1.__decorate([
@@ -140,10 +140,10 @@ tslib_1.__decorate([
     (0, rest_1.response)(204, {
         description: 'Company PUT success',
     }),
-    tslib_1.__param(0, rest_1.param.path.number('id')),
+    tslib_1.__param(0, rest_1.param.path.string('id')),
     tslib_1.__param(1, (0, rest_1.requestBody)()),
     tslib_1.__metadata("design:type", Function),
-    tslib_1.__metadata("design:paramtypes", [Number, models_1.Company]),
+    tslib_1.__metadata("design:paramtypes", [String, models_1.Company]),
     tslib_1.__metadata("design:returntype", Promise)
 ], CompanyController.prototype, "replaceById", null);
 tslib_1.__decorate([
@@ -151,9 +151,9 @@ tslib_1.__decorate([
     (0, rest_1.response)(204, {
         description: 'Company DELETE success',
     }),
-    tslib_1.__param(0, rest_1.param.path.number('id')),
+    tslib_1.__param(0, rest_1.param.path.string('id')),
     tslib_1.__metadata("design:type", Function),
-    tslib_1.__metadata("design:paramtypes", [Number]),
+    tslib_1.__metadata("design:paramtypes", [String]),
     tslib_1.__metadata("design:returntype", Promise)
 ], CompanyController.prototype, "deleteById", null);
 CompanyController = tslib_1.__decorate([

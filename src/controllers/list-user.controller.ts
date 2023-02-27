@@ -107,7 +107,7 @@ export class ListUserController {
     },
   })
   async findById(
-    @param.path.number('id') id: number,
+    @param.path.string('id') id: string,
     @param.filter(ListUser, {exclude: 'where'}) filter?: FilterExcludingWhere<ListUser>
   ): Promise<ListUser> {
     return this.listUserRepository.findById(id, filter);
@@ -118,7 +118,7 @@ export class ListUserController {
     description: 'ListUser PATCH success',
   })
   async updateById(
-    @param.path.number('id') id: number,
+    @param.path.string('id') id: string,
     @requestBody({
       content: {
         'application/json': {
@@ -136,7 +136,7 @@ export class ListUserController {
     description: 'ListUser PUT success',
   })
   async replaceById(
-    @param.path.number('id') id: number,
+    @param.path.string('id') id: string,
     @requestBody() listUser: ListUser,
   ): Promise<void> {
     await this.listUserRepository.replaceById(id, listUser);
@@ -146,7 +146,7 @@ export class ListUserController {
   @response(204, {
     description: 'ListUser DELETE success',
   })
-  async deleteById(@param.path.number('id') id: number): Promise<void> {
+  async deleteById(@param.path.string('id') id: string): Promise<void> {
     await this.listUserRepository.deleteById(id);
   }
 }

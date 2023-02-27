@@ -1,8 +1,4 @@
 "use strict";
-// Copyright IBM Corp. and LoopBack contributors 2018,2020. All Rights Reserved.
-// Node module: @loopback/example-todo
-// This file is licensed under the MIT License.
-// License text available at https://opensource.org/licenses/MIT
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.DbDataSource = void 0;
 const tslib_1 = require("tslib");
@@ -10,9 +6,14 @@ const core_1 = require("@loopback/core");
 const repository_1 = require("@loopback/repository");
 const config = {
     name: 'db',
-    connector: 'memory',
-    localStorage: '',
-    file: './data/db.json',
+    connector: 'mongodb',
+    url: 'mongodb://localhost:27017/NExtjs',
+    host: '',
+    port: 0,
+    user: '',
+    password: '',
+    database: '',
+    useNewUrlParser: true
 };
 // Observe application's life cycle to disconnect the datasource when
 // application is stopped. This allows the application to be shut down

@@ -105,7 +105,7 @@ export class CompanyController {
     },
   })
   async findById(
-    @param.path.number('id') id: number,
+    @param.path.string('id') id: string,
     @param.filter(Company, {exclude: 'where'}) filter?: FilterExcludingWhere<Company>
   ): Promise<Company> {
     return this.companyRepository.findById(id, filter);
@@ -116,7 +116,7 @@ export class CompanyController {
     description: 'Company PATCH success',
   })
   async updateById(
-    @param.path.number('id') id: number,
+    @param.path.string('id') id: string,
     @requestBody({
       content: {
         'application/json': {
@@ -134,7 +134,7 @@ export class CompanyController {
     description: 'Company PUT success',
   })
   async replaceById(
-    @param.path.number('id') id: number,
+    @param.path.string('id') id: string,
     @requestBody() company: Company,
   ): Promise<void> {
     await this.companyRepository.replaceById(id, company);
@@ -144,7 +144,7 @@ export class CompanyController {
   @response(204, {
     description: 'Company DELETE success',
   })
-  async deleteById(@param.path.number('id') id: number): Promise<void> {
+  async deleteById(@param.path.string('id') id: string): Promise<void> {
     await this.companyRepository.deleteById(id);
   }
 }

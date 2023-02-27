@@ -1,7 +1,7 @@
 import { Entity } from '@loopback/repository';
 import { ListUser } from './list-user.model';
 export declare class Company extends Entity {
-    id?: number;
+    id?: string;
     name: string;
     listuser?: ListUser[];
     city: string;

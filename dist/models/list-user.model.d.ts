@@ -1,10 +1,10 @@
 import { Entity } from '@loopback/repository';
 export declare class ListUser extends Entity {
-    id?: number;
+    id?: string;
     username: string;
     address: string;
     birthday: string;
-    companyId: number;
+    companyId: string;
     role: string;
     [prop: string]: any;
     constructor(data?: Partial<ListUser>);

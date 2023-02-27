@@ -5,8 +5,13 @@ export declare class DbDataSource extends juggler.DataSource implements LifeCycl
     static readonly defaultConfig: {
         name: string;
         connector: string;
-        localStorage: string;
-        file: string;
+        url: string;
+        host: string;
+        port: number;
+        user: string;
+        password: string;
+        database: string;
+        useNewUrlParser: boolean;
     };
     constructor(dsConfig?: object);
 }

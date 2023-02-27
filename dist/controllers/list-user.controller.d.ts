@@ -8,8 +8,8 @@ export declare class ListUserController {
     count(where?: Where<ListUser>): Promise<Count>;
     find(filter?: Filter<ListUser>): Promise<ListUser[]>;
     updateAll(listUser: ListUser, where?: Where<ListUser>): Promise<Count>;
-    findById(id: number, filter?: FilterExcludingWhere<ListUser>): Promise<ListUser>;
-    updateById(id: number, listUser: ListUser): Promise<void>;
-    replaceById(id: number, listUser: ListUser): Promise<void>;
-    deleteById(id: number): Promise<void>;
+    findById(id: string, filter?: FilterExcludingWhere<ListUser>): Promise<ListUser>;
+    updateById(id: string, listUser: ListUser): Promise<void>;
+    replaceById(id: string, listUser: ListUser): Promise<void>;
+    deleteById(id: string): Promise<void>;
 }

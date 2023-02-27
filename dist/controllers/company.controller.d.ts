@@ -8,8 +8,8 @@ export declare class CompanyController {
     count(where?: Where<Company>): Promise<Count>;
     find(filter?: Filter<Company>): Promise<Company[]>;
     updateAll(company: Company, where?: Where<Company>): Promise<Count>;
-    findById(id: number, filter?: FilterExcludingWhere<Company>): Promise<Company>;
-    updateById(id: number, company: Company): Promise<void>;
-    replaceById(id: number, company: Company): Promise<void>;
-    deleteById(id: number): Promise<void>;
+    findById(id: string, filter?: FilterExcludingWhere<Company>): Promise<Company>;
+    updateById(id: string, company: Company): Promise<void>;
+    replaceById(id: string, company: Company): Promise<void>;
+    deleteById(id: string): Promise<void>;
 }

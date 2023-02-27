@@ -4,11 +4,11 @@ import { Company } from './company.model';
 @model({settings: {strict: false}})
 export class ListUser extends Entity {
   @property({
-    type: 'number',
+    type: 'string',
     id: true,
     generated: true,
   })
-  id?: number;
+  id?: string;
 
   @property({
     type: 'string',
@@ -31,7 +31,7 @@ export class ListUser extends Entity {
   birthday: string;
 
   @belongsTo(()=> Company )
-  companyId: number
+  companyId: string
 
   @property({
     type: 'string',

@@ -11,11 +11,11 @@ let ListUser = class ListUser extends repository_1.Entity {
 };
 tslib_1.__decorate([
     (0, repository_1.property)({
-        type: 'number',
+        type: 'string',
         id: true,
         generated: true,
     }),
-    tslib_1.__metadata("design:type", Number)
+    tslib_1.__metadata("design:type", String)
 ], ListUser.prototype, "id", void 0);
 tslib_1.__decorate([
     (0, repository_1.property)({
@@ -40,7 +40,7 @@ tslib_1.__decorate([
 ], ListUser.prototype, "birthday", void 0);
 tslib_1.__decorate([
     (0, repository_1.belongsTo)(() => company_model_1.Company),
-    tslib_1.__metadata("design:type", Number)
+    tslib_1.__metadata("design:type", String)
 ], ListUser.prototype, "companyId", void 0);
 tslib_1.__decorate([
     (0, repository_1.property)({
