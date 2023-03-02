@@ -1,4 +1,6 @@
 import { authenticate } from '@loopback/authentication';
+import {inject} from '@loopback/core';
+import {HttpErrors} from '@loopback/rest';
 import {
   Count,
   CountSchema,
@@ -18,19 +20,18 @@ import {
   requestBody,
   response,
 } from '@loopback/rest';
+import {Response, RestBindings} from '@loopback/rest';
 import { ListUser } from '../models';
 import { ListUserRepository } from '../repositories';
-import { ValidateUsersInterceptor } from '../interceptors';
-import { intercept } from '@loopback/context';
 
 @authenticate('jwt')
 export class ListUserController {
   constructor(
     @repository(ListUserRepository)
     public listUserRepository: ListUserRepository,
+    @inject(RestBindings.Http.RESPONSE) protected response: Response
   ) { }
 
-  @intercept(ValidateUsersInterceptor.BINDING_KEY)
   @post('/users')
   @response(200, {
     description: 'ListUser model instance',
@@ -49,7 +50,20 @@ export class ListUserController {
     })
     listUser: Omit<ListUser, 'id'>,
   ): Promise<ListUser> {
-    return this.listUserRepository.create(listUser);
+    let username = listUser.username
+    let role = listUser.role
+      const nameAlreadyExist = await this.listUserRepository.find({ where: { username } })
+      if (nameAlreadyExist.length) {
+        throw new HttpErrors.UnprocessableEntity(
+          'Name already exist',
+        );
+      }
+      if(role !== 'Admin' && role !== 'User'){
+        throw new HttpErrors.UnprocessableEntity(
+          'invalid role',
+        );
+      }
+      return this.listUserRepository.create(listUser);
   }
 
   @get('/users/count')
@@ -142,6 +156,14 @@ export class ListUserController {
     @param.path.string('id') id: string,
     @requestBody() listUser: ListUser,
   ): Promise<void> {
+    let username = listUser.username
+    let role = listUser.role
+      const nameAlreadyExist = await this.listUserRepository.find({ where: { username } })
+      if(role !== 'Admin' && role !== 'User'){
+        throw new HttpErrors.UnprocessableEntity(
+          'invalid role',
+        );
+      }
     await this.listUserRepository.replaceById(id, listUser);
   }
 
