@@ -13,6 +13,9 @@ export class ListUser extends Entity {
   @property({
     type: 'string',
     required: true,
+    index: {
+      unique: true,
+    },
   })
   username: string;
 
@@ -39,13 +42,8 @@ export class ListUser extends Entity {
   })
   role: string;
 
-  // Define well-known properties here
-
-  // Indexer property to allow additional data
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  [prop: string]: any;
-
-  constructor(data?: Partial<ListUser>) {
+  constructor(data: Partial<ListUser>) {
+    // if (data.role != Admin ) throw new Error('role is not a valid number')
     super(data);
   }
 }

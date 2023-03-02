@@ -154,9 +154,7 @@ export class UserController {
     const savedUser = await this.userRepository.create(
       _.omit(newUserRequest, 'password'),
     );
-
     await this.userRepository.userCredentials(savedUser.id).create({password});
-
     return savedUser;
   }
 }

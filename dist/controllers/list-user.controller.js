@@ -7,6 +7,8 @@ const repository_1 = require("@loopback/repository");
 const rest_1 = require("@loopback/rest");
 const models_1 = require("../models");
 const repositories_1 = require("../repositories");
+const interceptors_1 = require("../interceptors");
+const context_1 = require("@loopback/context");
 let ListUserController = class ListUserController {
     constructor(listUserRepository) {
         this.listUserRepository = listUserRepository;
@@ -37,7 +39,8 @@ let ListUserController = class ListUserController {
     }
 };
 tslib_1.__decorate([
-    (0, rest_1.post)('/list-users'),
+    (0, context_1.intercept)(interceptors_1.ValidateUsersInterceptor.BINDING_KEY),
+    (0, rest_1.post)('/users'),
     (0, rest_1.response)(200, {
         description: 'ListUser model instance',
         content: { 'application/json': { schema: (0, rest_1.getModelSchemaRef)(models_1.ListUser) } },
@@ -57,7 +60,7 @@ tslib_1.__decorate([
     tslib_1.__metadata("design:returntype", Promise)
 ], ListUserController.prototype, "create", null);
 tslib_1.__decorate([
-    (0, rest_1.get)('/list-users/count'),
+    (0, rest_1.get)('/users/count'),
     (0, rest_1.response)(200, {
         description: 'ListUser model count',
         content: { 'application/json': { schema: repository_1.CountSchema } },
@@ -68,7 +71,7 @@ tslib_1.__decorate([
     tslib_1.__metadata("design:returntype", Promise)
 ], ListUserController.prototype, "count", null);
 tslib_1.__decorate([
-    (0, rest_1.get)('/list-users'),
+    (0, rest_1.get)('/users'),
     (0, rest_1.response)(200, {
         description: 'Array of ListUser model instances',
         content: {
@@ -86,7 +89,7 @@ tslib_1.__decorate([
     tslib_1.__metadata("design:returntype", Promise)
 ], ListUserController.prototype, "find", null);
 tslib_1.__decorate([
-    (0, rest_1.patch)('/list-users'),
+    (0, rest_1.patch)('/users'),
     (0, rest_1.response)(200, {
         description: 'ListUser PATCH success count',
         content: { 'application/json': { schema: repository_1.CountSchema } },
@@ -104,7 +107,7 @@ tslib_1.__decorate([
     tslib_1.__metadata("design:returntype", Promise)
 ], ListUserController.prototype, "updateAll", null);
 tslib_1.__decorate([
-    (0, rest_1.get)('/list-users/{id}'),
+    (0, rest_1.get)('/users/{id}'),
     (0, rest_1.response)(200, {
         description: 'ListUser model instance',
         content: {
@@ -120,7 +123,7 @@ tslib_1.__decorate([
     tslib_1.__metadata("design:returntype", Promise)
 ], ListUserController.prototype, "findById", null);
 tslib_1.__decorate([
-    (0, rest_1.patch)('/list-users/{id}'),
+    (0, rest_1.patch)('/users/{id}'),
     (0, rest_1.response)(204, {
         description: 'ListUser PATCH success',
     }),
@@ -137,7 +140,7 @@ tslib_1.__decorate([
     tslib_1.__metadata("design:returntype", Promise)
 ], ListUserController.prototype, "updateById", null);
 tslib_1.__decorate([
-    (0, rest_1.put)('/list-users/{id}'),
+    (0, rest_1.put)('/users/{id}'),
     (0, rest_1.response)(204, {
         description: 'ListUser PUT success',
     }),
@@ -148,7 +151,7 @@ tslib_1.__decorate([
     tslib_1.__metadata("design:returntype", Promise)
 ], ListUserController.prototype, "replaceById", null);
 tslib_1.__decorate([
-    (0, rest_1.del)('/list-users/{id}'),
+    (0, rest_1.del)('/users/{id}'),
     (0, rest_1.response)(204, {
         description: 'ListUser DELETE success',
     }),

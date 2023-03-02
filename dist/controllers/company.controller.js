@@ -3,6 +3,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.CompanyController = void 0;
 const tslib_1 = require("tslib");
 const repository_1 = require("@loopback/repository");
+const authentication_1 = require("@loopback/authentication");
 const rest_1 = require("@loopback/rest");
 const models_1 = require("../models");
 const repositories_1 = require("../repositories");
@@ -157,6 +158,7 @@ tslib_1.__decorate([
     tslib_1.__metadata("design:returntype", Promise)
 ], CompanyController.prototype, "deleteById", null);
 CompanyController = tslib_1.__decorate([
+    (0, authentication_1.authenticate)('jwt'),
     tslib_1.__param(0, (0, repository_1.repository)(repositories_1.CompanyRepository)),
     tslib_1.__metadata("design:paramtypes", [repositories_1.CompanyRepository])
 ], CompanyController);

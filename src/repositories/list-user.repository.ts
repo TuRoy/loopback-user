@@ -30,6 +30,5 @@ export class ListUserRepository extends DefaultCrudRepository<
       companyRepositoryGetter
     )
     this.registerInclusionResolver('company', this.company.inclusionResolver);
-
   }
 }

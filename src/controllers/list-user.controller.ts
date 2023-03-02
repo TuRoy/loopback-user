@@ -1,4 +1,4 @@
-import {authenticate} from '@loopback/authentication';
+import { authenticate } from '@loopback/authentication';
 import {
   Count,
   CountSchema,
@@ -18,20 +18,23 @@ import {
   requestBody,
   response,
 } from '@loopback/rest';
-import {ListUser} from '../models';
-import {ListUserRepository} from '../repositories';
+import { ListUser } from '../models';
+import { ListUserRepository } from '../repositories';
+import { ValidateUsersInterceptor } from '../interceptors';
+import { intercept } from '@loopback/context';
 
 @authenticate('jwt')
 export class ListUserController {
   constructor(
     @repository(ListUserRepository)
-    public listUserRepository : ListUserRepository,
-  ) {}
+    public listUserRepository: ListUserRepository,
+  ) { }
 
-  @post('/list-users')
+  @intercept(ValidateUsersInterceptor.BINDING_KEY)
+  @post('/users')
   @response(200, {
     description: 'ListUser model instance',
-    content: {'application/json': {schema: getModelSchemaRef(ListUser)}},
+    content: { 'application/json': { schema: getModelSchemaRef(ListUser) } },
   })
   async create(
     @requestBody({
@@ -49,10 +52,10 @@ export class ListUserController {
     return this.listUserRepository.create(listUser);
   }
 
-  @get('/list-users/count')
+  @get('/users/count')
   @response(200, {
     description: 'ListUser model count',
-    content: {'application/json': {schema: CountSchema}},
+    content: { 'application/json': { schema: CountSchema } },
   })
   async count(
     @param.where(ListUser) where?: Where<ListUser>,
@@ -60,14 +63,14 @@ export class ListUserController {
     return this.listUserRepository.count(where);
   }
 
-  @get('/list-users')
+  @get('/users')
   @response(200, {
     description: 'Array of ListUser model instances',
     content: {
       'application/json': {
         schema: {
           type: 'array',
-          items: getModelSchemaRef(ListUser, {includeRelations: true}),
+          items: getModelSchemaRef(ListUser, { includeRelations: true }),
         },
       },
     },
@@ -78,16 +81,16 @@ export class ListUserController {
     return this.listUserRepository.find(filter);
   }
 
-  @patch('/list-users')
+  @patch('/users')
   @response(200, {
     description: 'ListUser PATCH success count',
-    content: {'application/json': {schema: CountSchema}},
+    content: { 'application/json': { schema: CountSchema } },
   })
   async updateAll(
     @requestBody({
       content: {
         'application/json': {
-          schema: getModelSchemaRef(ListUser, {partial: true}),
+          schema: getModelSchemaRef(ListUser, { partial: true }),
         },
       },
     })
@@ -97,23 +100,23 @@ export class ListUserController {
     return this.listUserRepository.updateAll(listUser, where);
   }
 
-  @get('/list-users/{id}')
+  @get('/users/{id}')
   @response(200, {
     description: 'ListUser model instance',
     content: {
       'application/json': {
-        schema: getModelSchemaRef(ListUser, {includeRelations: true}),
+        schema: getModelSchemaRef(ListUser, { includeRelations: true }),
       },
     },
   })
   async findById(
     @param.path.string('id') id: string,
-    @param.filter(ListUser, {exclude: 'where'}) filter?: FilterExcludingWhere<ListUser>
+    @param.filter(ListUser, { exclude: 'where' }) filter?: FilterExcludingWhere<ListUser>
   ): Promise<ListUser> {
     return this.listUserRepository.findById(id, filter);
   }
 
-  @patch('/list-users/{id}')
+  @patch('/users/{id}')
   @response(204, {
     description: 'ListUser PATCH success',
   })
@@ -122,7 +125,7 @@ export class ListUserController {
     @requestBody({
       content: {
         'application/json': {
-          schema: getModelSchemaRef(ListUser, {partial: true}),
+          schema: getModelSchemaRef(ListUser, { partial: true }),
         },
       },
     })
@@ -131,7 +134,7 @@ export class ListUserController {
     await this.listUserRepository.updateById(id, listUser);
   }
 
-  @put('/list-users/{id}')
+  @put('/users/{id}')
   @response(204, {
     description: 'ListUser PUT success',
   })
@@ -142,7 +145,7 @@ export class ListUserController {
     await this.listUserRepository.replaceById(id, listUser);
   }
 
-  @del('/list-users/{id}')
+  @del('/users/{id}')
   @response(204, {
     description: 'ListUser DELETE success',
   })

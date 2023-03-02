@@ -6,6 +6,7 @@ import {
   repository,
   Where,
 } from '@loopback/repository';
+import {authenticate} from '@loopback/authentication';
 import {
   post,
   param,
@@ -19,6 +20,7 @@ import {
 } from '@loopback/rest';
 import {Company} from '../models';
 import {CompanyRepository} from '../repositories';
+  @authenticate('jwt')
 
 export class CompanyController {
   constructor(

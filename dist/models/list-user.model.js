@@ -6,6 +6,7 @@ const repository_1 = require("@loopback/repository");
 const company_model_1 = require("./company.model");
 let ListUser = class ListUser extends repository_1.Entity {
     constructor(data) {
+        // if (data.role != Admin ) throw new Error('role is not a valid number')
         super(data);
     }
 };
@@ -21,6 +22,9 @@ tslib_1.__decorate([
     (0, repository_1.property)({
         type: 'string',
         required: true,
+        index: {
+            unique: true,
+        },
     }),
     tslib_1.__metadata("design:type", String)
 ], ListUser.prototype, "username", void 0);

@@ -4,6 +4,8 @@ exports.DbDataSource = void 0;
 const tslib_1 = require("tslib");
 const core_1 = require("@loopback/core");
 const repository_1 = require("@loopback/repository");
+// mongodb://localhost:27017/NExtjs
+// mongodb+srv://admin:0967671182Tu@cluster0.dz3ipbf.mongodb.net?retryWrites=true&w=majority
 const config = {
     name: 'db',
     connector: 'mongodb',
