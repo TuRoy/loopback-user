@@ -6,8 +6,7 @@ export declare class ListUser extends Entity {
     birthday: string;
     companyId: string;
     role: string;
-    [prop: string]: any;
-    constructor(data?: Partial<ListUser>);
+    constructor(data: Partial<ListUser>);
 }
 export interface ListUserRelations {
 }

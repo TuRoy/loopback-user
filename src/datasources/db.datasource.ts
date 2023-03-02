@@ -1,6 +1,7 @@
 import {inject, lifeCycleObserver, LifeCycleObserver} from '@loopback/core';
 import {juggler} from '@loopback/repository';
-
+// mongodb://localhost:27017/NExtjs
+// mongodb+srv://admin:0967671182Tu@cluster0.dz3ipbf.mongodb.net?retryWrites=true&w=majority
 const config = {
   name: 'db',
   connector: 'mongodb',
