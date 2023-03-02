@@ -45,11 +45,23 @@ let ListUserController = class ListUserController {
     async replaceById(id, listUser) {
         let username = listUser.username;
         let role = listUser.role;
-        const nameAlreadyExist = await this.listUserRepository.find({ where: { username } });
-        if (role !== 'Admin' && role !== 'User') {
-            throw new rest_1.HttpErrors.UnprocessableEntity('invalid role');
+        const data = await this.listUserRepository.findById(listUser.id);
+        console.log(data);
+        if (username == data.username) {
+            if (role !== 'Admin' && role !== 'User') {
+                throw new rest_1.HttpErrors.UnprocessableEntity('invalid role');
+            }
         }
-        await this.listUserRepository.replaceById(id, listUser);
+        else {
+            const nameAlreadyExist = await this.listUserRepository.find({ where: { username } });
+            if (nameAlreadyExist.length) {
+                throw new rest_1.HttpErrors.UnprocessableEntity('Name already exist');
+            }
+            if (role !== 'Admin' && role !== 'User') {
+                throw new rest_1.HttpErrors.UnprocessableEntity('invalid role');
+            }
+        }
+        return this.listUserRepository.replaceById(id, listUser);
     }
     async deleteById(id) {
         await this.listUserRepository.deleteById(id);
