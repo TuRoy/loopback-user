@@ -25,6 +25,7 @@ export class ListUserController {
     @repository(ListUserRepository)
     public listUserRepository : ListUserRepository,
   ) {}
+  
   @post('/list-users')
   @response(200, {
     description: 'ListUser model instance',
