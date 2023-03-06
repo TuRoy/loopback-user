@@ -6,7 +6,7 @@ import {
   repository,
   Where,
 } from '@loopback/repository';
-import {authenticate} from '@loopback/authentication';
+import { authenticate } from '@loopback/authentication';
 import {
   post,
   param,
@@ -18,20 +18,20 @@ import {
   requestBody,
   response,
 } from '@loopback/rest';
-import {Company} from '../models';
-import {CompanyRepository} from '../repositories';
-  @authenticate('jwt')
+import { Company } from '../models';
+import { CompanyRepository } from '../repositories';
+@authenticate('jwt')
 
 export class CompanyController {
   constructor(
     @repository(CompanyRepository)
-    public companyRepository : CompanyRepository,
-  ) {}
+    public companyRepository: CompanyRepository,
+  ) { }
 
   @post('/companies')
   @response(200, {
     description: 'Company model instance',
-    content: {'application/json': {schema: getModelSchemaRef(Company)}},
+    content: { 'application/json': { schema: getModelSchemaRef(Company) } },
   })
   async create(
     @requestBody({
@@ -52,7 +52,7 @@ export class CompanyController {
   @get('/companies/count')
   @response(200, {
     description: 'Company model count',
-    content: {'application/json': {schema: CountSchema}},
+    content: { 'application/json': { schema: CountSchema } },
   })
   async count(
     @param.where(Company) where?: Where<Company>,
@@ -67,7 +67,7 @@ export class CompanyController {
       'application/json': {
         schema: {
           type: 'array',
-          items: getModelSchemaRef(Company, {includeRelations: true}),
+          items: getModelSchemaRef(Company, { includeRelations: true }),
         },
       },
     },
@@ -81,13 +81,13 @@ export class CompanyController {
   @patch('/companies')
   @response(200, {
     description: 'Company PATCH success count',
-    content: {'application/json': {schema: CountSchema}},
+    content: { 'application/json': { schema: CountSchema } },
   })
   async updateAll(
     @requestBody({
       content: {
         'application/json': {
-          schema: getModelSchemaRef(Company, {partial: true}),
+          schema: getModelSchemaRef(Company, { partial: true }),
         },
       },
     })
@@ -102,13 +102,13 @@ export class CompanyController {
     description: 'Company model instance',
     content: {
       'application/json': {
-        schema: getModelSchemaRef(Company, {includeRelations: true}),
+        schema: getModelSchemaRef(Company, { includeRelations: true }),
       },
     },
   })
   async findById(
     @param.path.string('id') id: string,
-    @param.filter(Company, {exclude: 'where'}) filter?: FilterExcludingWhere<Company>
+    @param.filter(Company, { exclude: 'where' }) filter?: FilterExcludingWhere<Company>
   ): Promise<Company> {
     return this.companyRepository.findById(id, filter);
   }
@@ -122,7 +122,7 @@ export class CompanyController {
     @requestBody({
       content: {
         'application/json': {
-          schema: getModelSchemaRef(Company, {partial: true}),
+          schema: getModelSchemaRef(Company, { partial: true }),
         },
       },
     })

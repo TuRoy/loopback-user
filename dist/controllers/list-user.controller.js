@@ -46,7 +46,6 @@ let ListUserController = class ListUserController {
         let username = listUser.username;
         let role = listUser.role;
         const data = await this.listUserRepository.findById(listUser.id);
-        console.log(data);
         if (username == data.username) {
             if (role !== 'Admin' && role !== 'User') {
                 throw new rest_1.HttpErrors.UnprocessableEntity('invalid role');

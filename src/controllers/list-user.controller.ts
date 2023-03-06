@@ -1,6 +1,6 @@
 import { authenticate } from '@loopback/authentication';
-import {inject} from '@loopback/core';
-import {HttpErrors} from '@loopback/rest';
+import { inject } from '@loopback/core';
+import { HttpErrors } from '@loopback/rest';
 import {
   Count,
   CountSchema,
@@ -20,7 +20,7 @@ import {
   requestBody,
   response,
 } from '@loopback/rest';
-import {Response, RestBindings} from '@loopback/rest';
+import { Response, RestBindings } from '@loopback/rest';
 import { ListUser } from '../models';
 import { ListUserRepository } from '../repositories';
 
@@ -52,18 +52,18 @@ export class ListUserController {
   ): Promise<ListUser> {
     let username = listUser.username
     let role = listUser.role
-      const nameAlreadyExist = await this.listUserRepository.find({ where: { username } })
-      if (nameAlreadyExist.length) {
-        throw new HttpErrors.UnprocessableEntity(
-          'Name already exist',
-        );
-      }
-      if(role !== 'Admin' && role !== 'User'){
-        throw new HttpErrors.UnprocessableEntity(
-          'invalid role',
-        );
-      }
-      return this.listUserRepository.create(listUser);
+    const nameAlreadyExist = await this.listUserRepository.find({ where: { username } })
+    if (nameAlreadyExist.length) {
+      throw new HttpErrors.UnprocessableEntity(
+        'Name already exist',
+      );
+    }
+    if (role !== 'Admin' && role !== 'User') {
+      throw new HttpErrors.UnprocessableEntity(
+        'invalid role',
+      );
+    }
+    return this.listUserRepository.create(listUser);
   }
 
   @get('/users/count')
@@ -158,28 +158,27 @@ export class ListUserController {
   ): Promise<void> {
     let username = listUser.username
     let role = listUser.role
-      const data = await this.listUserRepository.findById(listUser.id)
-      console.log(data);
-      if(username == data.username){
-        if(role !== 'Admin' && role !== 'User'){
-          throw new HttpErrors.UnprocessableEntity(
-            'invalid role',
-          );
-        }
-      }else{
-        const nameAlreadyExist = await this.listUserRepository.find({ where: { username } })
-        if (nameAlreadyExist.length) {
-          throw new HttpErrors.UnprocessableEntity(
-            'Name already exist',
-          );
-        }
-        if(role !== 'Admin' && role !== 'User'){
-          throw new HttpErrors.UnprocessableEntity(
-            'invalid role',
-          );
-        }
+    const data = await this.listUserRepository.findById(listUser.id)
+    if (username == data.username) {
+      if (role !== 'Admin' && role !== 'User') {
+        throw new HttpErrors.UnprocessableEntity(
+          'invalid role',
+        );
       }
-    return  this.listUserRepository.replaceById(id, listUser);
+    } else {
+      const nameAlreadyExist = await this.listUserRepository.find({ where: { username } })
+      if (nameAlreadyExist.length) {
+        throw new HttpErrors.UnprocessableEntity(
+          'Name already exist',
+        );
+      }
+      if (role !== 'Admin' && role !== 'User') {
+        throw new HttpErrors.UnprocessableEntity(
+          'invalid role',
+        );
+      }
+    }
+    return this.listUserRepository.replaceById(id, listUser);
   }
 
   @del('/users/{id}')
